@@ -5,6 +5,7 @@ import android.content.ContentValues
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
+import android.widget.TextView
 
 class DatabaseHandler(context: Context) :
     SQLiteOpenHelper(context, DATABASE_NAME, null, DATABASE_VERSION) {
@@ -45,6 +46,7 @@ class DatabaseHandler(context: Context) :
         val selectQuery = "SELECT * FROM $TABLE_NAME"
         val db = this.readableDatabase
         val cursor = db.rawQuery(selectQuery, null)
+
 
         if (cursor.moveToFirst()) {
             do {

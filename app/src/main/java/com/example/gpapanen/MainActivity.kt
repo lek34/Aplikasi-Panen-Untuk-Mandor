@@ -4,6 +4,7 @@ import ItemAdapter
 import android.annotation.SuppressLint
 import android.os.Bundle
 import android.widget.EditText
+import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
@@ -30,14 +31,21 @@ class MainActivity : AppCompatActivity() {
         // Inisialisasi databaseHandler di sini
         databaseHandler = DatabaseHandler(this)
 
-        // Menampilkan data dari database ke RecyclerView
-        adapter.setItems(databaseHandler.getAllItems())
+        val items = databaseHandler.getAllItems()
+        if (items.isEmpty()) {
+            // Tampilkan pesan "Test Belum Ada Data"
+            // Anda dapat menambahkannya langsung ke RecyclerView atau menampilkan pesan secara terpisah
+            // Menampilkan pesan "Belum Ada Data" jika tidak ada item yang ditemukan
+            findViewById<TextView>(R.id.pesan).text = "Belum Ada Data"
+        } else {
+            // Menampilkan data dari database ke RecyclerView
+            adapter.setItems(items)
+            adapter.notifyDataSetChanged()
+        }
 
-        // Simulasi data
-        items.add(Item(1, "Alex", "Makan"))
-        items.add(Item(2, "Alex 2", "Deskripsi 2"))
-        items.add(Item(3, "Alex 3", "Deskripsi 3"))
-        adapter.notifyDataSetChanged()
+
+
+
 
         val fabAdd: FloatingActionButton = findViewById(R.id.fabAdd)
         fabAdd.setOnClickListener {
@@ -49,6 +57,7 @@ class MainActivity : AppCompatActivity() {
 
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     private fun showAddItemDialog() {
         val builder = AlertDialog.Builder(this)
         builder.setTitle("Tambah Item Baru")
@@ -68,7 +77,7 @@ class MainActivity : AppCompatActivity() {
             val id = databaseHandler.addItem(newItem)
             newItem.id = id.toInt() // Mengatur ID yang diberikan oleh database
             adapter.addItem(newItem)
-
+            this.recreate();
             dialog.dismiss()
         }
 
