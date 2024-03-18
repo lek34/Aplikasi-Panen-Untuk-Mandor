@@ -44,14 +44,9 @@ class MainActivity : AppCompatActivity() {
         }
 
 
-
-
-
         val fabAdd: FloatingActionButton = findViewById(R.id.fabAdd)
         fabAdd.setOnClickListener {
-            fabAdd.setOnClickListener {
                 showAddItemDialog()
-            }
         }
 
 
