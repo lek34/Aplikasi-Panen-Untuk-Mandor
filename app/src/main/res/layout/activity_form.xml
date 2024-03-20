@@ -36,40 +36,34 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_marginHorizontal="5dp"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:gravity="center"> <!-- Set gravity to center -->
 
             <Button
                 android:id="@+id/button3"
                 android:layout_width="55dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:backgroundTint="#DDB0B0"
-                android:text="+"
-                android:textColor="#201111"
-                android:textColorLink="#937272"
-                android:textDirection="firstStrongRtl"
-                android:textSize="16sp" />
-
+                android:layout_gravity="center"
+                android:background="@drawable/cyan_button"
+                android:text="+" />
         </LinearLayout>
+
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:gravity="center"> <!-- Set gravity to center -->
 
             <Button
                 android:id="@+id/button4"
                 android:layout_width="55dp"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="5dp"
-                android:layout_weight="1"
-                android:backgroundTint="#DDB0B0"
-                android:text="-"
-                android:textColor="#201111"
-                android:textColorLink="#937272"
-                android:textDirection="firstStrongRtl"
-                android:textSize="16sp" />
+                android:layout_gravity="center"
+                android:background="@drawable/cyan_button"
+                android:text="-" />
         </LinearLayout>
+
 
     </LinearLayout>
 
